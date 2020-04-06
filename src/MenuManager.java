@@ -108,32 +108,32 @@ public class MenuManager {
 	
 	public static void deleteAccommodation () {	
 		Scanner input = new Scanner(System.in);
-		System.out.print("Area:");
-		String Area = input.next();
+		System.out.print("Name:");
+		String Name = input.next();
 	}
 	
 	public static void deleteTouristSpot () {	
 		Scanner input = new Scanner(System.in);
-		System.out.print("Area:");
-		String Area = input.next();
+		System.out.print("Name:");
+		String Name = input.next();
 	}
 	
     public static void editRestaurantCafe () {	
     	Scanner input = new Scanner(System.in);
-    	System.out.print("Area:");
-		String Area = input.next();
+    	System.out.print("Name:");
+		String Name = input.next();
 	}
     
     public static void editAccommodation () {	
 		Scanner input = new Scanner(System.in);
-		System.out.print("Area:");
-		String Area = input.next();
+		System.out.print("Name:");
+		String Name = input.next();
 	}
 	
 	public static void editTouristSpot () {	
 		Scanner input = new Scanner(System.in);
-		System.out.print("Area:");
-		String Area = input.next();
+		System.out.print("Name:");
+		String Name = input.next();
 	}
     
 	public static void viewRestaurantCafe () {	
