@@ -4,9 +4,11 @@ public class MenuManager {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		int num = 13;
-
-		while (num !=14) {
+		RestaurantCafeManager RestaurantCafeManager = new RestaurantCafeManager(input);
+		AccommodationManager AccommodationManager = new AccommodationManager(input);
+		TouristSpotManager TouristSpotManager = new TouristSpotManager(input);
+		int num = -1;
+		while (num !=13) {
 			System.out.println("*** Place Recommendation ***");
 			System.out.println("Select Your Theme");
 			System.out.println("1. Add Restaurant, Cafe");
@@ -21,44 +23,44 @@ public class MenuManager {
 			System.out.println("10. View Restaurant, Cafe");
 			System.out.println("11. View Accommodation");
 			System.out.println("12. View Tourist Spot");
-			System.out.println("13. Show Menu");
-			System.out.println("14. See You Again");
+			System.out.println("13. See You Again");
+			System.out.println("Slect one number between 1 - 13");
 			num = input.nextInt();
 			if (num == 1) {
-				addRestaurantCafe ();
+				RestaurantCafeManager.addRestaurantCafe ();
 			}
 			else if (num == 2) {
-				addAccommodation ();
+				AccommodationManager.addAccommodation ();
 			}
 			else if (num == 3) {
-				addTouristSpot ();
+				TouristSpotManager.addTouristSpot ();
 			}
 			else if (num == 4) {
-				deleteRestaurantCafe ();
+				RestaurantCafeManager.deleteRestaurantCafe ();
 			}
 			else if (num == 5) {
-				deleteAccommodation ();
+				AccommodationManager.deleteAccommodation ();
 			}
 			else if (num == 6) {
-				deleteTouristSpot ();
+				TouristSpotManager.deleteTouristSpot ();
 			}
 			else if (num == 7) {
-				editRestaurantCafe ();
+				RestaurantCafeManager.editRestaurantCafe ();
 			}
 			else if (num == 8) {
-				editAccommodation ();
+				AccommodationManager.editAccommodation ();
 			}
 			else if (num == 9) {
-				editTouristSpot ();
+				TouristSpotManager.editTouristSpot ();
 			}
 			else if (num == 10) {
-				viewRestaurantCafe ();
+				RestaurantCafeManager.viewRestaurantCafe ();
 			}
 			else if (num == 11) {
-				viewAccommodation ();
+				AccommodationManager.viewAccommodation ();
 			}
 			else if (num == 12) {
-				viewTouristSpot ();
+				TouristSpotManager.viewTouristSpot ();
 			}
 			else {
 				continue;
@@ -85,7 +87,7 @@ public class MenuManager {
 		System.out.print("Name:");
 		String Name = input.next();
 		System.out.print("Accommodation type:");
-		String Food = input.next();
+		String Accommodationtype = input.next();
 		System.out.print("Price:");
 		int Price = input.nextInt();
 	}
@@ -100,8 +102,8 @@ public class MenuManager {
 	
 	public static void deleteRestaurantCafe () {	
 		Scanner input = new Scanner(System.in);
-		System.out.print("Area:");
-		String Area = input.next();
+		System.out.print("Name:");
+		String Name = input.next();
 	}
 	
 	public static void deleteAccommodation () {	
