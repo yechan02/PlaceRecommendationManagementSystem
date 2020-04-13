@@ -20,9 +20,9 @@ public class MenuManager {
 			System.out.println("7. Edit Restaurant, Cafe");
 			System.out.println("8. Edit Accommodation");
 			System.out.println("9. Edit Tourist Spot");
-			System.out.println("10. View Restaurant, Cafe");
-			System.out.println("11. View Accommodation");
-			System.out.println("12. View Tourist Spot");
+			System.out.println("10. View Restaurants, Cafes");
+			System.out.println("11. View Accommodations");
+			System.out.println("12. View Tourist Spots");
 			System.out.println("13. See You Again");
 			System.out.println("Slect one number between 1 - 13");
 			num = input.nextInt();
@@ -57,7 +57,7 @@ public class MenuManager {
 				RestaurantCafeManager.viewRestaurantCafe ();
 			}
 			else if (num == 11) {
-				AccommodationManager.viewAccommodation ();
+				AccommodationManager.viewAccommodations ();
 			}
 			else if (num == 12) {
 				TouristSpotManager.viewTouristSpot ();

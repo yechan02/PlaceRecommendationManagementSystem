@@ -4,8 +4,10 @@ public class Accommodation {
 	String Name;
 	String Accommodationtype;
 	int Price;
+	static int numAccommodationRegistered = 0;
 	
-	public Accommodation() {	
+	public Accommodation() {
+		numAccommodationRegistered++;
 	}
 	
 	public Accommodation(String Area, String Name, String Food, int Price) {
@@ -13,6 +15,7 @@ public class Accommodation {
 		this.Name = Name;
 		this.Accommodationtype = Accommodationtype;
 		this.Price = Price;
+		numAccommodationRegistered++;
 	}
 	
 	public void printInfo() {
