@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import RestaurantCafe.Chinesefood;
+import RestaurantCafe.RestaurantCafe;
+
 public class RestaurantCafeManager {
 	ArrayList<RestaurantCafe> RestaurantsCafes = new ArrayList<RestaurantCafe>();
 	Scanner input;
@@ -9,16 +12,29 @@ public class RestaurantCafeManager {
 	}
 	
 	public void addRestaurantCafe () {
-		RestaurantCafe RestaurantCafe = new RestaurantCafe();
-		System.out.print("Area:");
-		RestaurantCafe.Area = input.next();
-		System.out.print("Name:");
-		RestaurantCafe.Name = input.next();
-		System.out.print("Food:");
-		RestaurantCafe.Food = input.next();
-		System.out.print("Price:");
-		RestaurantCafe.Price = input.nextInt();
-		RestaurantsCafes.add(RestaurantCafe);
+		int kind = 0;
+		RestaurantCafe RestaurantCafe;
+		while (kind != 1 && kind !=2) {
+			System.out.print("1 for Korean food  ");
+			System.out.print("2 for Chinese food  ");
+			System.out.print("Select num for RestaurantCafe kind:");
+			kind = input.nextInt();
+			if (kind == 1) {
+				RestaurantCafe = new RestaurantCafe();
+				RestaurantCafe.getUserInput(input);
+				RestaurantsCafes.add(RestaurantCafe);
+				break;
+			}
+			else if (kind == 2) {
+				RestaurantCafe = new Chinesefood();
+				RestaurantCafe.getUserInput(input);
+				RestaurantsCafes.add(RestaurantCafe);
+				break;
+			}
+			else {
+				System.out.print("Select num for RestaurantCafe kind:");
+			}
+		}
 	}
 	
 	public void deleteRestaurantCafe () {	
@@ -26,7 +42,7 @@ public class RestaurantCafeManager {
 		String Name = input.next();
 		int index = -1;
 		for (int i = 0; i<RestaurantsCafes.size(); i++) {
-			if (Name.equals(RestaurantsCafes.get(i).Name)) {
+			if (Name.equals(RestaurantsCafes.get(i).getName())) {
 				index = i;
 				break;
 			}
@@ -34,7 +50,6 @@ public class RestaurantCafeManager {
 		
 		if (index >= 0) {
 			RestaurantsCafes.remove(index);
-			RestaurantCafe.numRestaurantCafeRegistered--;
 			System.out.println("the RestaurantCafe" + Name + "is deleted");
 		}
 		else {
@@ -48,7 +63,7 @@ public class RestaurantCafeManager {
 		String Name = input.next();
 		for (int i = 0; i<RestaurantsCafes.size(); i++) {
 			RestaurantCafe RestaurantCafe = RestaurantsCafes.get(i);
-			if (Name.equals(RestaurantCafe.Name)) {
+			if (Name.equals(RestaurantCafe.getName())) {
 				int num = -1;
 				while (num !=5) {
 					System.out.println("** Restaurant,Cafe Edit Menu **");
@@ -61,19 +76,23 @@ public class RestaurantCafeManager {
 					num = input.nextInt();
 					if (num == 1) {
 						System.out.print("Area:");
-						RestaurantCafe.Area = input.next();
+						String area = input.next();
+						RestaurantCafe.setArea(area);
 					}
 					else if (num == 2) {
-						RestaurantCafe.Area = input.next();
 						System.out.print("Name:");
+						String name = input.next();
+						RestaurantCafe.setName(name);
 					}
 					else if (num == 3) {
 						System.out.print("Food:");
-						RestaurantCafe.Food = input.next();
+						String food = input.next();
+						RestaurantCafe.setFood(food);
 					}
 					else if (num == 4) {
 						System.out.print("Price:");
-						RestaurantCafe.Price = input.nextInt();
+						int price = input.nextInt();
+						RestaurantCafe.setPrice(price);
 					}
 					else {
 						continue;
@@ -87,7 +106,7 @@ public class RestaurantCafeManager {
 	public void viewRestaurantCafe () {	
 //		System.out.print("Area:");
 //		String Area = input.next();
-		System.out.println("# of registered RestaurantsCafes:" + RestaurantCafe.numRestaurantCafeRegistered);
+		System.out.println("# of registered RestaurantsCafes:" + RestaurantsCafes.size());
 		for (int i = 0; i<RestaurantsCafes.size(); i++) {
 			RestaurantsCafes.get(i).printInfo();
 		}

@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import RestaurantCafe.Chinesefood;
+import RestaurantCafe.RestaurantCafe;
+import TouristSpot.Leisure;
+import TouristSpot.TouristSpot;
+
 public class TouristSpotManager {
 	ArrayList<TouristSpot> TouristSpots = new ArrayList<TouristSpot>();
 	Scanner input;
@@ -9,12 +14,29 @@ public class TouristSpotManager {
 	}
 	
 	public void addTouristSpot () {
-		TouristSpot TouristSpot = new TouristSpot();
-		System.out.print("Area:");
-		TouristSpot.Area = input.next();
-		System.out.print("Name:");
-		TouristSpot.Name = input.next();
-		TouristSpots.add(TouristSpot);
+		int kind = 0;
+		TouristSpot TouristSpot;
+		while (kind != 1 && kind !=2) {
+			System.out.print("1 for Touristattraction  ");
+			System.out.print("2 for Leisure  ");
+			System.out.print("Select num for TouristSpot kind:");
+			kind = input.nextInt();
+			if (kind == 1) {
+				TouristSpot = new TouristSpot();
+				TouristSpot.getUserInput(input);
+				TouristSpots.add(TouristSpot);
+				break;
+			}
+			else if (kind == 2) {
+				TouristSpot = new Leisure();
+				TouristSpot.getUserInput(input);
+				TouristSpots.add(TouristSpot);
+				break;
+			}
+			else {
+				System.out.print("Select num for RestaurantCafe kind:");
+			}
+		}
 	}
 	
 	public void deleteTouristSpot () {	
@@ -22,7 +44,7 @@ public class TouristSpotManager {
 		String Name = input.next();
 		int index = -1;
 		for (int i = 0; i<TouristSpots.size(); i++) {
-			if (Name.equals(TouristSpots.get(i).Name)) {
+			if (Name.equals(TouristSpots.get(i).getName())) {
 				index = i;
 				break;
 			}
@@ -30,7 +52,6 @@ public class TouristSpotManager {
 		
 		if (index >= 0) {
 			TouristSpots.remove(index);
-			TouristSpot.numTouristSpotRegistered--;
 			System.out.println("the TouristSpot" + Name + "is deleted");
 		}
 		else {
@@ -44,7 +65,7 @@ public class TouristSpotManager {
 		String Name = input.next();
 		for (int i = 0; i<TouristSpots.size(); i++) {
 			TouristSpot TouristSpot = TouristSpots.get(i);
-			if (Name.equals(TouristSpot.Name)) {
+			if (Name.equals(TouristSpot.getName())) {
 				int num = -1;
 				while (num !=3) {
 					System.out.println("** TouristSpot Edit Menu **");
@@ -55,11 +76,13 @@ public class TouristSpotManager {
 					num = input.nextInt();
 					if (num == 1) {
 						System.out.print("Area:");
-						TouristSpot.Area = input.next();
+						String area = input.next();
+						TouristSpot.setArea(area);
 					}
 					else if (num == 2) {
 						System.out.print("Name:");
-						TouristSpot.Name = input.next();
+						String name = input.next();
+						TouristSpot.setName(name);
 					}
 					else {
 						continue;
@@ -73,7 +96,7 @@ public class TouristSpotManager {
 	public void viewTouristSpot () {	
 //    	System.out.print("Area:");
 //		String Area = input.next();
-		System.out.println("# of registered TouristSpots:" + TouristSpot.numTouristSpotRegistered);
+		System.out.println("# of registered TouristSpots:" + TouristSpots.size());
 		for (int i = 0; i<TouristSpots.size(); i++) {
 			TouristSpots.get(i).printInfo();
 		}
