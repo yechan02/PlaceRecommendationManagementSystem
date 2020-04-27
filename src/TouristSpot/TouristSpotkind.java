@@ -4,5 +4,4 @@ public enum TouristSpotkind {
 	Touristattraction,
 	Leisure,
 	Performance,
-
 }

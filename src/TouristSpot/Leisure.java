@@ -13,5 +13,4 @@ public class Leisure extends TouristSpot {
 		String Name = input.next();
 		this.setName(Name);
 	}
-
 }

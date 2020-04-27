@@ -15,6 +15,12 @@ public class TouristSpot {
 		this.Name = Name;		
 	}
 	
+	public TouristSpot(TouristSpotkind kind, String Area, String Name) {
+		this.kind = kind;
+		this.Area = Area;
+		this.Name = Name;		
+	}
+	
 	public TouristSpotkind getKind() {
 		return kind;
 	}
@@ -39,8 +45,21 @@ public class TouristSpot {
 		Name = name;
 	}
 	
+	String skind = "none";
 	public void printInfo() {
-		System.out.println("Area:" + Area + "Name:" + Name);	  	
+		switch(this.kind) {
+		case Touristattraction:
+			skind = "Attraction";
+			break;
+		case Leisure:
+			skind = "Leisure";
+			break;
+		case Performance:
+			skind = "Performance";
+			break;
+		default:
+		}
+		System.out.println("kind:" + skind + "Area:" + Area + "Name:" + Name);	  	
 	}
 	
 	public void getUserInput(Scanner input) {

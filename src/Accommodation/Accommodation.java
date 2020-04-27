@@ -17,6 +17,13 @@ public class Accommodation {
 		this.Price = Price;
 	}
 	
+	public Accommodation(Accommodationkind kind, String Area, String Name, int Price) {
+		this.kind = kind;
+		this.Area = Area;
+		this.Name = Name;
+		this.Price = Price;
+	}
+	
 	public Accommodationkind getKind() {
 		return kind;
 	}
@@ -49,8 +56,27 @@ public class Accommodation {
 		Price = price;
 	}
 	
+	String skind = "none";
 	public void printInfo() {
-		System.out.println("Area:" + Area + "Name:" + Name + "Price:" + Price);	  	
+		switch(this.kind) {
+		case Motel:
+			skind = "Motel";
+			break;
+		case Hotel:
+			skind = "Hotel";
+			break;
+		case ResortCondo:
+			skind = "Resort";
+			break;
+		case Pension:
+			skind = "Pension";
+			break;
+		case Guesthouse:
+			skind = "Guest";
+			break;
+		default:
+		}
+		System.out.println("kind:" + skind + "Area:" + Area + "Name:" + Name + "Price:" + Price);	  	
 	}
 	
 	public void getUserInput(Scanner input) {

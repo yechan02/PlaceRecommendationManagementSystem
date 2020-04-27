@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 import RestaurantCafe.Chinesefood;
 import RestaurantCafe.RestaurantCafe;
+import RestaurantCafe.RestaurantCafekind;
+import RestaurantCafe.TeaDessert;
 
 public class RestaurantCafeManager {
 	ArrayList<RestaurantCafe> RestaurantsCafes = new ArrayList<RestaurantCafe>();
@@ -15,18 +17,25 @@ public class RestaurantCafeManager {
 		int kind = 0;
 		RestaurantCafe RestaurantCafe;
 		while (kind != 1 && kind !=2) {
-			System.out.print("1 for Korean food  ");
-			System.out.print("2 for Chinese food  ");
+			System.out.println("1 for Korean food  ");
+			System.out.println("2 for Chinese food  ");
+			System.out.println("3 for TeaDessert  ");
 			System.out.print("Select num for RestaurantCafe kind:");
 			kind = input.nextInt();
 			if (kind == 1) {
-				RestaurantCafe = new RestaurantCafe();
+				RestaurantCafe = new RestaurantCafe(RestaurantCafekind.Koreanfood);
 				RestaurantCafe.getUserInput(input);
 				RestaurantsCafes.add(RestaurantCafe);
 				break;
 			}
 			else if (kind == 2) {
-				RestaurantCafe = new Chinesefood();
+				RestaurantCafe = new Chinesefood(RestaurantCafekind.Chinesefood);
+				RestaurantCafe.getUserInput(input);
+				RestaurantsCafes.add(RestaurantCafe);
+				break;
+			}
+			else if (kind == 3) {
+				RestaurantCafe = new TeaDessert(RestaurantCafekind.TeaDessert);
 				RestaurantCafe.getUserInput(input);
 				RestaurantsCafes.add(RestaurantCafe);
 				break;

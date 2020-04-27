@@ -12,7 +12,19 @@ public class RestaurantCafe {
 	public RestaurantCafe() {
 	}
 	
+	public RestaurantCafe(RestaurantCafekind kind) {
+		this.kind = kind;
+	}
+	
 	public RestaurantCafe(String Area, String Name, String Food, int Price) {
+		this.Area = Area;
+		this.Name = Name;
+		this.Food = Food;
+		this.Price = Price;
+	}
+	
+	public RestaurantCafe(RestaurantCafekind kind, String Area, String Name, String Food, int Price) {
+		this.kind = kind;
 		this.Area = Area;
 		this.Name = Name;
 		this.Food = Food;
@@ -60,7 +72,26 @@ public class RestaurantCafe {
 	}
 	
 	public void printInfo() {
-		System.out.println("Area:" + Area + "Name:" + Name + " Food:" + Food + "Price:" + Price);	  		
+		String skind = "none";
+		switch(this.kind) {
+		case Koreanfood:
+			skind = "Korea";
+			break;
+		case Chinesefood:
+			skind = "China";
+			break;
+		case Westernfood:
+			skind = "West";
+			break;
+		case Japanesefood:
+			skind = "Japan";
+			break;
+		case TeaDessert:
+			skind = "TeaDessert";
+			break;
+		default:
+		}
+		System.out.println("kind:" + skind + "Area:" + Area + "Name:" + Name + " Food:" + Food + "Price:" + Price);	  		
 	}
 	
 	public void getUserInput(Scanner input) {

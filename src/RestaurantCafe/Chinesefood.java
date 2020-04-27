@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Chinesefood extends RestaurantCafe {
 	
+	public Chinesefood(RestaurantCafekind kind) {
+		super(kind);
+	}
+	
 	public void getUserInput(Scanner input) {
 		System.out.print("Area:");
 		String Area = input.next();
@@ -21,5 +25,4 @@ public class Chinesefood extends RestaurantCafe {
 		int Price = input.nextInt();
 		this.setPrice(Price);
 	}	
-
 }
