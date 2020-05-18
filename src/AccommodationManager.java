@@ -7,7 +7,6 @@ import Accommodation.AccommodationInput;
 import Accommodation.Accommodationkind;
 import Accommodation.Hotel;
 import Accommodation.Motel;
-import RestaurantCafe.RestaurantCafeInput;
 
 public class AccommodationManager {
 	ArrayList<AccommodationInput> Accommodations = new ArrayList<AccommodationInput>();

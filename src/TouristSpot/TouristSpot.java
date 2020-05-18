@@ -2,8 +2,6 @@ package TouristSpot;
 
 import java.util.Scanner;
 
-import Accommodation.AccommodationInput;
-
 public abstract class TouristSpot implements TouristSpotInput {
 	protected TouristSpotkind kind = TouristSpotkind.Touristattraction;
 	protected String Area;

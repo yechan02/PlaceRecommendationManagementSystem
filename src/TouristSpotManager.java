@@ -2,9 +2,6 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import Accommodation.AccommodationInput;
-import RestaurantCafe.Chinesefood;
-import RestaurantCafe.RestaurantCafe;
 import TouristSpot.Leisure;
 import TouristSpot.TouristSpot;
 import TouristSpot.TouristSpotInput;

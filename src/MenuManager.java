@@ -88,5 +88,3 @@ public class MenuManager {
 		System.out.println("Slect one number between 1 - 13");
 	}
 }
-	
-
