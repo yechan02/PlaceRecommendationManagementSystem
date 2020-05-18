@@ -4,13 +4,17 @@ import java.util.Scanner;
 
 public class Leisure extends TouristSpot {
 	
+	public Leisure(TouristSpotkind kind) {
+		super(kind);
+	}
+	
 	public void getUserInput(Scanner input) {
-		System.out.print("Area:");
-		String Area = input.next();
-		this.setArea(Area);
-		
-		System.out.print("Name:");
-		String Name = input.next();
-		this.setName(Name);
+		setArea(input);
+		setName(input);
+	}
+	
+	public void printInfo() {
+		String skind = getkindString();
+		System.out.println("kind:" + skind + "Area:" + Area + "Name:" + Name);	  	
 	}
 }

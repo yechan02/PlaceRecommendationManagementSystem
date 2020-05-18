@@ -2,22 +2,28 @@ package Accommodation;
 
 import java.util.Scanner;
 
-public class Accommodation {
+import Exceptions.PriceFormatException;
+
+public abstract class Accommodation implements AccommodationInput {
 	protected Accommodationkind kind = Accommodationkind.Motel;
 	protected String Area;
 	protected String Name;
-	protected int Price;
+	protected String Price;
 	
 	public Accommodation() {
 	}
 	
-	public Accommodation(String Area, String Name, int Price) {
+	public Accommodation(Accommodationkind kind) {
+		this.kind = kind;
+	}
+	
+	public Accommodation(String Area, String Name, String Price) {
 		this.Area = Area;
 		this.Name = Name;
 		this.Price = Price;
 	}
 	
-	public Accommodation(Accommodationkind kind, String Area, String Name, int Price) {
+	public Accommodation(Accommodationkind kind, String Area, String Name, String Price) {
 		this.kind = kind;
 		this.Area = Area;
 		this.Name = Name;
@@ -48,16 +54,47 @@ public class Accommodation {
 		Name = name;
 	}
 
-	public int getPrice() {
+	public String getPrice() {
 		return Price;
 	}
 
-	public void setPrice(int price) {
-		Price = price;
+	public void setPrice(String price) throws PriceFormatException {
+		if (!price.contains("$") && !price.equals("")) {
+			throw new PriceFormatException();
+		}
+		
+		this.Price = price;
 	}
 	
-	String skind = "none";
-	public void printInfo() {
+	public abstract void printInfo();
+	
+	public void setArea(Scanner input) {
+		System.out.print("Area:");
+		String area = input.next();
+		this.setArea(area);
+	}
+	
+	public void setName(Scanner input) {
+		System.out.print("Name:");
+		String name = input.next();
+		this.setName(name);
+	}
+	
+	public void setPrice(Scanner input) {
+		String price = "";
+		while (!price.contains("$")) {
+			System.out.print("Price:");
+			price = input.next();
+			try {
+				this.setPrice(price);
+			} catch (PriceFormatException e) {
+				System.out.println("Incorrect Price Format. Put the price that contains $");
+			}
+		}
+	}
+	
+	public String getkindString() {
+		String skind = "none";
 		switch(this.kind) {
 		case Motel:
 			skind = "Motel";
@@ -76,20 +113,6 @@ public class Accommodation {
 			break;
 		default:
 		}
-		System.out.println("kind:" + skind + "Area:" + Area + "Name:" + Name + "Price:" + Price);	  	
-	}
-	
-	public void getUserInput(Scanner input) {
-		System.out.print("Area:");
-		String Area = input.next();
-		this.setArea(Area);
-		
-		System.out.print("Name:");
-		String Name = input.next();
-		this.setName(Name);
-		
-		System.out.print("Price:");
-		int Price = input.nextInt();
-		this.setPrice(Price);
+		return skind;
 	}
 }

@@ -2,12 +2,18 @@ package TouristSpot;
 
 import java.util.Scanner;
 
-public class TouristSpot {
+import Accommodation.AccommodationInput;
+
+public abstract class TouristSpot implements TouristSpotInput {
 	protected TouristSpotkind kind = TouristSpotkind.Touristattraction;
 	protected String Area;
 	protected String Name;
 	
 	public TouristSpot() {
+	}
+	
+	public TouristSpot(TouristSpotkind kind) {
+		this.kind = kind;
 	}
 	
 	public TouristSpot(String Area, String Name) {
@@ -45,8 +51,22 @@ public class TouristSpot {
 		Name = name;
 	}
 	
-	String skind = "none";
-	public void printInfo() {
+	public abstract void printInfo();
+
+	public void setArea(Scanner input) {
+		System.out.print("Area:");
+		String area = input.next();
+		this.setArea(area);		
+	}
+
+	public void setName(Scanner input) {
+		System.out.print("Name:");
+		String name = input.next();
+		this.setName(name);		
+	}
+	
+	public String getkindString() {
+		String skind = "none";
 		switch(this.kind) {
 		case Touristattraction:
 			skind = "Attraction";
@@ -59,16 +79,6 @@ public class TouristSpot {
 			break;
 		default:
 		}
-		System.out.println("kind:" + skind + "Area:" + Area + "Name:" + Name);	  	
-	}
-	
-	public void getUserInput(Scanner input) {
-		System.out.print("Area:");
-		String Area = input.next();
-		this.setArea(Area);
-		
-		System.out.print("Name:");
-		String Name = input.next();
-		this.setName(Name);
+		return skind;
 	}
 }

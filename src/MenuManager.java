@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuManager {
@@ -7,151 +8,84 @@ public class MenuManager {
 		RestaurantCafeManager RestaurantCafeManager = new RestaurantCafeManager(input);
 		AccommodationManager AccommodationManager = new AccommodationManager(input);
 		TouristSpotManager TouristSpotManager = new TouristSpotManager(input);
+
+		slectMenu(input, RestaurantCafeManager, AccommodationManager, TouristSpotManager);
+	}
+	
+	public static void slectMenu(Scanner input, RestaurantCafeManager RestaurantCafeManager, AccommodationManager AccommodationManager, TouristSpotManager TouristSpotManager) {
 		int num = -1;
 		while (num !=13) {
-			System.out.println("*** Place Recommendation ***");
-			System.out.println("Select Your Theme");
-			System.out.println("1. Add Restaurant, Cafe");
-			System.out.println("2. Add Accommodation");
-			System.out.println("3. Add Tourist Spot");
-			System.out.println("4. Delete Restaurant, Cafe");
-			System.out.println("5. Delete Accommodation");
-			System.out.println("6. Delete Tourist Spot");
-			System.out.println("7. Edit Restaurant, Cafe");
-			System.out.println("8. Edit Accommodation");
-			System.out.println("9. Edit Tourist Spot");
-			System.out.println("10. View Restaurants, Cafes");
-			System.out.println("11. View Accommodations");
-			System.out.println("12. View Tourist Spots");
-			System.out.println("13. See You Again");
-			System.out.println("Slect one number between 1 - 13");
-			num = input.nextInt();
-			if (num == 1) {
-				RestaurantCafeManager.addRestaurantCafe ();
+			try {
+				ShowMenu();
+				num = input.nextInt();
+				switch(num) {
+				case 1:
+					RestaurantCafeManager.addRestaurantCafe ();
+					break;
+				case 2:
+					AccommodationManager.addAccommodation ();
+					break;
+				case 3:
+					TouristSpotManager.addTouristSpot ();
+					break;
+				case 4:
+					RestaurantCafeManager.deleteRestaurantCafe ();
+					break;
+				case 5:
+					AccommodationManager.deleteAccommodation ();
+					break;
+				case 6:
+					TouristSpotManager.deleteTouristSpot ();
+					break;
+				case 7:
+					RestaurantCafeManager.editRestaurantCafe ();
+					break;
+				case 8:
+					AccommodationManager.editAccommodation ();
+					break;
+				case 9:
+					TouristSpotManager.editTouristSpot ();
+					break;
+				case 10:
+					RestaurantCafeManager.viewRestaurantCafe ();
+					break;
+				case 11:
+					AccommodationManager.viewAccommodations ();
+					break;
+				case 12:
+					TouristSpotManager.viewTouristSpot ();
+					break;
+				default:
+					continue;				
+				}
 			}
-			else if (num == 2) {
-				AccommodationManager.addAccommodation ();
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 and 13!");
+				if (input.hasNext()) {
+					input.next();
+				}
+				num = -1;
 			}
-			else if (num == 3) {
-				TouristSpotManager.addTouristSpot ();
-			}
-			else if (num == 4) {
-				RestaurantCafeManager.deleteRestaurantCafe ();
-			}
-			else if (num == 5) {
-				AccommodationManager.deleteAccommodation ();
-			}
-			else if (num == 6) {
-				TouristSpotManager.deleteTouristSpot ();
-			}
-			else if (num == 7) {
-				RestaurantCafeManager.editRestaurantCafe ();
-			}
-			else if (num == 8) {
-				AccommodationManager.editAccommodation ();
-			}
-			else if (num == 9) {
-				TouristSpotManager.editTouristSpot ();
-			}
-			else if (num == 10) {
-				RestaurantCafeManager.viewRestaurantCafe ();
-			}
-			else if (num == 11) {
-				AccommodationManager.viewAccommodations ();
-			}
-			else if (num == 12) {
-				TouristSpotManager.viewTouristSpot ();
-			}
-			else {
-				continue;
-			}
-		}
-	}
-
-	public static void addRestaurantCafe () {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Area:");
-		String Area = input.next();
-		System.out.print("Name:");
-		String Name = input.next();
-		System.out.print("Food:");
-		String Food = input.next();
-		System.out.print("Price:");
-		int Price = input.nextInt();
+		}	
 	}
 	
-	public static void addAccommodation () {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Area:");
-		String Area = input.next();
-		System.out.print("Name:");
-		String Name = input.next();
-		System.out.print("Accommodation type:");
-		String Accommodationtype = input.next();
-		System.out.print("Price:");
-		int Price = input.nextInt();
-	}
-	
-	public static void addTouristSpot () {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Area:");
-		String Area = input.next();
-		System.out.print("Name:");
-		String Name = input.next();
-	}
-	
-	public static void deleteRestaurantCafe () {	
-		Scanner input = new Scanner(System.in);
-		System.out.print("Name:");
-		String Name = input.next();
-	}
-	
-	public static void deleteAccommodation () {	
-		Scanner input = new Scanner(System.in);
-		System.out.print("Name:");
-		String Name = input.next();
-	}
-	
-	public static void deleteTouristSpot () {	
-		Scanner input = new Scanner(System.in);
-		System.out.print("Name:");
-		String Name = input.next();
-	}
-	
-    public static void editRestaurantCafe () {	
-    	Scanner input = new Scanner(System.in);
-    	System.out.print("Name:");
-		String Name = input.next();
-	}
-    
-    public static void editAccommodation () {	
-		Scanner input = new Scanner(System.in);
-		System.out.print("Name:");
-		String Name = input.next();
-	}
-	
-	public static void editTouristSpot () {	
-		Scanner input = new Scanner(System.in);
-		System.out.print("Name:");
-		String Name = input.next();
-	}
-    
-	public static void viewRestaurantCafe () {	
-		Scanner input = new Scanner(System.in);
-		System.out.print("Area:");
-		String Area = input.next();
-	}
-	
-	public static void viewAccommodation () {	
-		Scanner input = new Scanner(System.in);
-		System.out.print("Area:");
-		String Area = input.next();
-	}
-	
-	public static void viewTouristSpot () {	
-    	Scanner input = new Scanner(System.in);
-    	System.out.print("Area:");
-		String Area = input.next();
+	public static void ShowMenu() {
+		System.out.println("*** Place Recommendation ***");
+		System.out.println("Select Your Theme");
+		System.out.println("1. Add Restaurant, Cafe");
+		System.out.println("2. Add Accommodation");
+		System.out.println("3. Add Tourist Spot");
+		System.out.println("4. Delete Restaurant, Cafe");
+		System.out.println("5. Delete Accommodation");
+		System.out.println("6. Delete Tourist Spot");
+		System.out.println("7. Edit Restaurant, Cafe");
+		System.out.println("8. Edit Accommodation");
+		System.out.println("9. Edit Tourist Spot");
+		System.out.println("10. View Restaurants, Cafes");
+		System.out.println("11. View Accommodations");
+		System.out.println("12. View Tourist Spots");
+		System.out.println("13. See You Again");
+		System.out.println("Slect one number between 1 - 13");
 	}
 }
 	

@@ -4,17 +4,18 @@ import java.util.Scanner;
 
 public class Hotel extends Accommodation {
 	
+	public Hotel(Accommodationkind kind) {
+		super(kind);
+	}
+	
 	public void getUserInput(Scanner input) {
-		System.out.print("Area:");
-		String Area = input.next();
-		this.setArea(Area);
-		
-		System.out.print("Name:");
-		String Name = input.next();
-		this.setName(Name);
-		
-		System.out.print("Price:");
-		int Price = input.nextInt();
-		this.setPrice(Price);
+		setArea(input);
+		setName(input);
+		setPrice(input);
+	}
+	
+	public void printInfo() {
+		String skind = getkindString();
+		System.out.println("kind:" + skind + "Area:" + Area + "Name:" + Name + "Price:" + Price);	  	
 	}
 }
