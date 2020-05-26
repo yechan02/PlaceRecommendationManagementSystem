@@ -1,10 +1,16 @@
 package RestaurantCafe;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import Exceptions.PriceFormatException;
 
-public abstract class RestaurantCafe implements RestaurantCafeInput {
+public abstract class RestaurantCafe implements RestaurantCafeInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4522559585883517606L;
+	
 	protected RestaurantCafekind kind = RestaurantCafekind.Koreanfood;
     protected String Area;
 	protected String Name;

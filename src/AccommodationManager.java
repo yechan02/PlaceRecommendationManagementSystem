@@ -1,16 +1,21 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import Accommodation.Accommodation;
 import Accommodation.AccommodationInput;
 import Accommodation.Accommodationkind;
 import Accommodation.Hotel;
 import Accommodation.Motel;
 
-public class AccommodationManager {
+public class AccommodationManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6584562947384484105L;
+	
 	ArrayList<AccommodationInput> Accommodations = new ArrayList<AccommodationInput>();
-	Scanner input;
+	transient Scanner input;
 	AccommodationManager(Scanner input) {
 		this.input = input;
 	}

@@ -1,16 +1,21 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import TouristSpot.Leisure;
-import TouristSpot.TouristSpot;
 import TouristSpot.TouristSpotInput;
 import TouristSpot.TouristSpotkind;
 import TouristSpot.Touristattraction;
 
-public class TouristSpotManager {
+public class TouristSpotManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3108198041695877495L;
+	
 	ArrayList<TouristSpotInput> TouristSpots = new ArrayList<TouristSpotInput>();
-	Scanner input;
+	transient Scanner input;
 	TouristSpotManager(Scanner input) {
 		this.input = input;
 	}

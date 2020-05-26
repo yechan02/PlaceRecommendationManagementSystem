@@ -1,10 +1,16 @@
 package Accommodation;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import Exceptions.PriceFormatException;
 
-public abstract class Accommodation implements AccommodationInput {
+public abstract class Accommodation implements AccommodationInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1993573701653137682L;
+	
 	protected Accommodationkind kind = Accommodationkind.Motel;
 	protected String Area;
 	protected String Name;

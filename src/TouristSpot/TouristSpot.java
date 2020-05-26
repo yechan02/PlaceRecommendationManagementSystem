@@ -1,8 +1,14 @@
 package TouristSpot;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public abstract class TouristSpot implements TouristSpotInput {
+public abstract class TouristSpot implements TouristSpotInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -776367451206827611L;
+	
 	protected TouristSpotkind kind = TouristSpotkind.Touristattraction;
 	protected String Area;
 	protected String Name;

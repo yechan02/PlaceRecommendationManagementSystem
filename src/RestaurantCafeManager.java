@@ -1,17 +1,22 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import RestaurantCafe.Chinesefood;
 import RestaurantCafe.Koreanfood;
-import RestaurantCafe.RestaurantCafe;
 import RestaurantCafe.RestaurantCafeInput;
 import RestaurantCafe.RestaurantCafekind;
 import RestaurantCafe.TeaDessert;
 
-public class RestaurantCafeManager {
+public class RestaurantCafeManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5331480528682187122L;
+	
 	ArrayList<RestaurantCafeInput> RestaurantsCafes = new ArrayList<RestaurantCafeInput>();
-	Scanner input;
+	transient Scanner input;
 	RestaurantCafeManager(Scanner input) {
 		this.input = input;
 	}
