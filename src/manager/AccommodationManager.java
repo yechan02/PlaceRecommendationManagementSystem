@@ -1,12 +1,16 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Accommodation.Accommodation;
 import Accommodation.AccommodationInput;
 import Accommodation.Accommodationkind;
 import Accommodation.Hotel;
 import Accommodation.Motel;
+import TouristSpot.TouristSpot;
+import TouristSpot.TouristSpotInput;
 
 public class AccommodationManager implements Serializable {
 	/**
@@ -121,6 +125,14 @@ public class AccommodationManager implements Serializable {
 		for (int i = 0; i<Accommodations.size(); i++) {
 			Accommodations.get(i).printInfo();
 		}
+	}
+	
+	public int size() {
+		return Accommodations.size();
+	}
+	
+	public AccommodationInput get(int index) {
+		return (Accommodation) Accommodations.get(index);
 	}
 	
 	public void ShowEditMenu() {

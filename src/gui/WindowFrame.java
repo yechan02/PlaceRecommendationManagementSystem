@@ -3,7 +3,16 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import manager.AccommodationManager;
+import manager.RestaurantCafeManager;
+import manager.TouristSpotManager;
+
 public class WindowFrame extends JFrame {
+	
+	RestaurantCafeManager RestaurantCafeManager;
+	AccommodationManager AccommodationManager;
+	TouristSpotManager TouristSpotManager;
+	
 	MenuSelection menuselection;
 	RestaurantCafeAdder restaurantcafeadder;
 	AccommodationAdder accommodationadder;
@@ -12,20 +21,23 @@ public class WindowFrame extends JFrame {
 	AccommodationViewer accommodationviewer;
 	TouristSpotViewer touristspotviewer;
 	
-	public WindowFrame() {
-		this.menuselection = new MenuSelection(this);
-		this.restaurantcafeadder = new RestaurantCafeAdder(this);
-		this.accommodationadder = new AccommodationAdder(this);
-		this.touristspotadder = new TouristSpotAdder(this);
-		this.restaurantcafeviewer = new RestaurantCafeViewer(this);
-		this.accommodationviewer = new AccommodationViewer(this);
-		this.touristspotviewer = new TouristSpotViewer(this);	
+	public WindowFrame(RestaurantCafeManager RestaurantCafeManager, AccommodationManager AccommodationManager, TouristSpotManager TouristSpotManager) {
+		
+		this.RestaurantCafeManager = RestaurantCafeManager;
+		this.AccommodationManager = AccommodationManager;
+		this.TouristSpotManager = TouristSpotManager;
+		menuselection = new MenuSelection(this);
+		restaurantcafeadder = new RestaurantCafeAdder(this);
+		accommodationadder = new AccommodationAdder(this);
+		touristspotadder = new TouristSpotAdder(this);
+		restaurantcafeviewer = new RestaurantCafeViewer(this, this.RestaurantCafeManager);
+		accommodationviewer = new AccommodationViewer(this, this.AccommodationManager = AccommodationManager);
+		touristspotviewer = new TouristSpotViewer(this, this.TouristSpotManager = TouristSpotManager);
+		
 		
 		this.setSize(600, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		this.setupPanel(menuselection);
-		
 		this.setVisible(true);
 	}
 

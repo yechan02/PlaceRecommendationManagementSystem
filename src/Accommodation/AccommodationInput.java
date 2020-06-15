@@ -6,11 +6,15 @@ import Exceptions.PriceFormatException;
 
 public interface AccommodationInput {
 	
-	public String getName();
+	public String getArea();
 	
 	public void setArea(String area);
 	
+	public String getName();
+	
 	public void setName(String name);
+	
+	public String getPrice();
 	
 	public void setPrice(String price) throws PriceFormatException;
 	

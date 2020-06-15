@@ -1,9 +1,13 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import RestaurantCafe.RestaurantCafe;
+import RestaurantCafe.RestaurantCafeInput;
 import TouristSpot.Leisure;
+import TouristSpot.TouristSpot;
 import TouristSpot.TouristSpotInput;
 import TouristSpot.TouristSpotkind;
 import TouristSpot.Touristattraction;
@@ -118,6 +122,14 @@ public class TouristSpotManager implements Serializable {
 		for (int i = 0; i<TouristSpots.size(); i++) {
 			TouristSpots.get(i).printInfo();
 		}
+	}
+	
+	public int size() {
+		return TouristSpots.size();
+	}
+	
+	public TouristSpotInput get(int index) {
+		return (TouristSpot) TouristSpots.get(index);
 	}
 
 	public void ShowEditMenu() {

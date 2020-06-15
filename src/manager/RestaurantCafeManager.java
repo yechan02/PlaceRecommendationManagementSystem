@@ -1,3 +1,4 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -5,6 +6,7 @@ import java.util.Scanner;
 
 import RestaurantCafe.Chinesefood;
 import RestaurantCafe.Koreanfood;
+import RestaurantCafe.RestaurantCafe;
 import RestaurantCafe.RestaurantCafeInput;
 import RestaurantCafe.RestaurantCafekind;
 import RestaurantCafe.TeaDessert;
@@ -132,6 +134,14 @@ public class RestaurantCafeManager implements Serializable {
 		for (int i = 0; i<RestaurantsCafes.size(); i++) {
 			RestaurantsCafes.get(i).printInfo();
 		}
+	}
+	
+	public int size() {
+		return RestaurantsCafes.size();
+	}
+	
+	public RestaurantCafeInput get(int index) {
+		return (RestaurantCafe) RestaurantsCafes.get(index);
 	}
 	
 	public void ShowEditMenu() {

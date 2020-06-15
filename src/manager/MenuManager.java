@@ -1,3 +1,4 @@
+package manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -7,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {
@@ -16,18 +18,19 @@ public class MenuManager {
 		
 		Scanner input = new Scanner(System.in);
 		RestaurantCafeManager RestaurantCafeManager = getObject("RestaurantCafeManager.ser");
-		if (RestaurantCafeManager ==null) {
+		if (RestaurantCafeManager == null) {
 			RestaurantCafeManager = new RestaurantCafeManager(input);
 		}
 		AccommodationManager AccommodationManager = getObject1("AccommodationManager.ser");
-		if (AccommodationManager ==null) {
+		if (AccommodationManager == null) {
 			AccommodationManager = new AccommodationManager(input);
 		}
 		TouristSpotManager TouristSpotManager = getObject2("TouristSpotManager.ser");
-		if (TouristSpotManager ==null) {
+		if (TouristSpotManager == null) {
 			TouristSpotManager = new TouristSpotManager(input);
 		}
 
+		WindowFrame frame = new WindowFrame(RestaurantCafeManager, AccommodationManager, TouristSpotManager);
 		slectMenu(input, RestaurantCafeManager, AccommodationManager, TouristSpotManager);
 		putObject(RestaurantCafeManager, "RestaurantCafeManager.ser");
 		putObject1(AccommodationManager, "AccommodationManager.ser");

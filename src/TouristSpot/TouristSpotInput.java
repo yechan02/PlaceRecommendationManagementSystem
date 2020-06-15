@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 public interface TouristSpotInput {
 	
-	public String getName();
+	public String getArea();
 	
 	public void setArea(String area);
+	
+	public String getName();
 	
 	public void setName(String name);
 	
